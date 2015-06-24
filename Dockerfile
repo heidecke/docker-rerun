@@ -21,7 +21,7 @@ RUN yum -y install \
     yum clean all
 
 # install rerun
-RUN rpm -Uvh http://dl.bintray.com/rerun/rerun-rpm/rerun-1.1.0-1.el6.noarch.rpm
+RUN rpm -Uvh http://dl.bintray.com/rerun/rerun-rpm/rerun-1.3.4-1.el6.noarch.rpm
 
 # compile and install discount markdown library
 ENV DISCOUNTVER 2.1.8a
