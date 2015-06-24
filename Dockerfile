@@ -47,4 +47,6 @@ ENV RERUN_MODULES /usr/lib/rerun/modules
 ENV RERUN_COLOR true
 
 WORKDIR $APPDIR
+VOLUME $APPDIR/modules
+
 CMD []
