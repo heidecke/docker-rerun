@@ -6,7 +6,7 @@ MAINTAINER Luke Heidecke <luke@solinea.com>
 ENV APPDIR /app
 WORKDIR $APPDIR
 
-RUN yum -y update && yum -y install \
+RUN yum -y install \
       epel-release \
       git \
       wget \
