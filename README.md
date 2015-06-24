@@ -12,3 +12,5 @@ This image includes rerun and the necessary dependencies of rerun stubbs:docs.
 
 ## Adding your own modules
 On image run, you can mount a volume to `/usr/lib/rerun/modules` with your own modules.
+
+`docker run -v $path/modules:/usr/lib/rerun/modules -ti lukeheidecke/rerun bash`
