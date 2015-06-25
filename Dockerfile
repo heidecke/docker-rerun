@@ -25,7 +25,11 @@ RUN yum -y install \
     yum clean all
 
 # install rerun
-RUN rpm -Uvh http://dl.bintray.com/rerun/rerun-rpm/rerun-$RERUNVER.noarch.rpm
+#RUN rpm -Uvh http://dl.bintray.com/rerun/rerun-rpm/rerun-$RERUNVER.noarch.rpm
+
+# install rerun from https://github.com/shlomoswidler/rerun for testing
+RUN git clone git@github.com:shlomoswidler/rerun.git && \
+    ln -sf $APPDIR/rerun/rerun $APPDIR/bin/rerun
 
 # compile and install discount markdown library
 ENV DISCOUNTURL http://www.pell.portland.or.us/~orc/Code/discount/discount-$DISCOUNTVER.tar.bz2
@@ -46,7 +50,7 @@ RUN pip install pygments==$PYGMENTSVER
 
 # environment variables
 ENV PATH ${PATH}:$APPDIR/bin
-ENV RERUN_MODULES /usr/lib/rerun/modules
+ENV RERUN_MODULES $APPDIR/rerun/modules:$APPDIR/modules
 ENV RERUN_COLOR true
 
 WORKDIR $APPDIR

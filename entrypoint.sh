@@ -26,13 +26,13 @@ fi
 while [ "$1" != "" ]; do
   case $1 in
     -s|--shell)
-      create-module-links
+      #create-module-links
       echo "Starting interactive shell..."
       bash
       exit $?
       ;;
     *)
-      create-module-links
+      #create-module-links
       exec rerun $1
       ;;
   esac
