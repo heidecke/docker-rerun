@@ -3,6 +3,10 @@
 FROM centos:6
 MAINTAINER Luke Heidecke <luke@solinea.com>
 
+ENV RERUNVER=1.3.4-1.el6
+ENV DISCOUNTVER=2.1.8a
+ENV PYGMENTSVER=2.0.2
+
 ENV APPDIR /app
 WORKDIR $APPDIR
 
@@ -21,10 +25,9 @@ RUN yum -y install \
     yum clean all
 
 # install rerun
-RUN rpm -Uvh http://dl.bintray.com/rerun/rerun-rpm/rerun-1.3.4-1.el6.noarch.rpm
+RUN rpm -Uvh http://dl.bintray.com/rerun/rerun-rpm/rerun-$RERUNVER.noarch.rpm
 
 # compile and install discount markdown library
-ENV DISCOUNTVER 2.1.8a
 ENV DISCOUNTURL http://www.pell.portland.or.us/~orc/Code/discount/discount-$DISCOUNTVER.tar.bz2
 RUN wget $DISCOUNTURL && \
     tar jxf discount-$DISCOUNTVER.tar.bz2 && \
@@ -39,7 +42,7 @@ RUN yum -y install gcc cloog-ppl cpp glibc-devel glibc-headers kernel-headers li
     yum clean all
 
 # install pygments
-RUN pip install pygments
+RUN pip install pygments==$PYGMENTSVER
 
 # environment variables
 ENV PATH ${PATH}:$APPDIR/bin
