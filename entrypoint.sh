@@ -4,13 +4,16 @@ if [ ! $APPDIR ]; then export APPDIR=./; fi
 if [ ! $RERUN_MODULES ]; then export RERUN_MODULES=./modules; fi
 
 function create-module-links {
-  echo "Creating module links..."
-  for module in $APPDIR/modules/*; do
-    if [ -d $module ]; then
-      module_name="$(basename "${module}")"
-      ln -sf $module $RERUN_MODULES/$module_name
-    fi
-  done
+  if [ -d $APPDIR/modules ]; then
+    for module in $APPDIR/modules/*; do
+      if [ -d $module ]; then
+        module_name="$(basename "${module}")"
+        ln -sf $module $RERUN_MODULES/$module_name
+      fi
+    done
+  else
+    echo "No local modules found."
+  fi
 }
 
 # if empty, display versions of all modules
@@ -25,12 +28,11 @@ while [ "$1" != "" ]; do
     -s|--shell)
       create-module-links
       echo "Starting interactive shell..."
-      bash
-      exit 0
+      exec bash
       ;;
     *)
       create-module-links
-      rerun $1
+      exec rerun $1
       ;;
   esac
   shift
