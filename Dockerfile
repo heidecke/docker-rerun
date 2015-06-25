@@ -49,4 +49,8 @@ ENV RERUN_COLOR true
 WORKDIR $APPDIR
 VOLUME $APPDIR/modules
 
-CMD []
+ADD entrypoint.sh $APPDIR/
+
+ENTRYPOINT ["./entrypoint.sh"]
+
+CMD ["-v"]
