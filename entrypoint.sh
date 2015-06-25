@@ -28,7 +28,8 @@ while [ "$1" != "" ]; do
     -s|--shell)
       create-module-links
       echo "Starting interactive shell..."
-      exec bash
+      bash
+      exit $?
       ;;
     *)
       create-module-links
