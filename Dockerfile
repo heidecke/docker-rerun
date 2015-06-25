@@ -28,7 +28,8 @@ RUN yum -y install \
 #RUN rpm -Uvh http://dl.bintray.com/rerun/rerun-rpm/rerun-$RERUNVER.noarch.rpm
 
 # install rerun from https://github.com/shlomoswidler/rerun for testing
-RUN git clone git@github.com:shlomoswidler/rerun.git && \
+RUN git clone https://github.com/shlomoswidler/rerun.git && \
+    mkdir -p $APPDIR/bin && \
     ln -sf $APPDIR/rerun/rerun $APPDIR/bin/rerun
 
 # compile and install discount markdown library
