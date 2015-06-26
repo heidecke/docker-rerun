@@ -33,7 +33,7 @@ while [ "$1" != "" ]; do
       ;;
     *)
       #create-module-links
-      exec rerun $1
+      exec rerun $@
       ;;
   esac
   shift
