@@ -17,6 +17,23 @@ The `-s` argument will allow you to use a local module repository and access the
 
 `docker run -v $localpath/modules:/app/modules -ti heidecke/rerun -s`
 
+### Running stubbs:docs to output documentation to a host directory
+
+```
+$ module=vip; \
+> localmods=~/Code/modules; \
+> localout=~/Code/docs/$module; \
+> docker run -v $localmods:/app/modules \
+>            -v $localout:/app/output \
+>            -e USER=$USER \
+>            -ti rerun stubbs:docs \
+>            --module $module \
+>            --dir /app/output
+Unix manual: /app/output/vip.1
+HTML site: /app/output/index.html
+$
+```
+
 Versions
 --------
 
