@@ -3,7 +3,7 @@
 FROM centos:6
 MAINTAINER Luke Heidecke <luke@solinea.com>
 
-ENV RERUNVER=1.3.4-1.el6
+ENV RERUNVER=1.3.6
 ENV DISCOUNTVER=2.1.8a
 ENV PYGMENTSVER=2.0.2
 
