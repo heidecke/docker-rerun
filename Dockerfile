@@ -57,6 +57,8 @@ ENV RERUN_COLOR true
 WORKDIR $APPDIR
 VOLUME $APPDIR/modules
 
+RUN ln -sf ${APPDIR}/rerun/etc/bash_completion.sh /etc/bash_completion.d/rerun
+
 ADD entrypoint.sh $APPDIR/
 
 ENTRYPOINT ["./entrypoint.sh"]
