@@ -51,7 +51,7 @@ RUN pip install pygments==$PYGMENTSVER
 
 # environment variables
 ENV PATH ${PATH}:$APPDIR/bin
-ENV RERUN_MODULES $APPDIR/rerun/modules:$APPDIR/modules
+ENV RERUN_MODULES $APPDIR/modules:$APPDIR/rerun/modules
 ENV RERUN_COLOR true
 
 WORKDIR $APPDIR
